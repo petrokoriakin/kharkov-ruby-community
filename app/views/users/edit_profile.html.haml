@@ -1,0 +1,7 @@
+= form_for @user do |f|
+  %p Something about me:
+  = f.text_area :about_me
+  %p Chose your photo:
+  = f.file_field :avatar
+  %br
+  = f.submit 'Update', :class => 'btn-primary'

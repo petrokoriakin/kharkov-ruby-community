@@ -1,5 +1,17 @@
 %h3 User
+.row-fluid
+  .span8
+    -if @user.avatar.nil?
+      %p RRR
+    -else
+      =image_tag @user.avatar(:thumb)
+  .span4
+    %p
+      User: #{@user.name}
+    %p
+      Email: #{@user.email if @user.email}
+%br
 %p
-  User: #{@user.name}
-%p
-  Email: #{@user.email if @user.email}
+  -if @user.about_me!=""
+    %h4 About me:
+    %p #{@user.about_me}

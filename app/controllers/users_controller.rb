@@ -19,7 +19,23 @@ class UsersController < ApplicationController
       redirect_to users_path, :alert => "Unable to update user."
     end
   end
-    
+
+  def edit_profile
+    authorize! :update, @user, :message => 'Not authorized as an administrator.'
+    @user= User.find(current_user.id)
+  end
+
+  def save_profile
+    authorize! :update, @user, :message => 'Not authorized as an administrator.'
+    @user= User.find(params[:id])
+
+    if @user.update_attribute(params[:user], :as=>:admin)
+      redirect_to users_path, :notice => "User updated."
+    else
+      redirect_to users_path, :alert => "Unable to update user."
+    end
+  end
+
   def destroy
     authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
     user = User.find(params[:id])
