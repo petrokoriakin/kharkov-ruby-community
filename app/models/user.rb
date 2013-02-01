@@ -12,5 +12,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "600x600>", :thumb => "200x200>" }
-  
+  has_many :posts
+  has_many :articles
 end

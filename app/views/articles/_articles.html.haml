@@ -1,0 +1,6 @@
+-@articles.each do |article|
+  .article
+    %h2 #{article.title}
+    =simple_format article.content
+    %p Author: #{article.user.name}
+  %br
