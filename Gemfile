@@ -33,3 +33,6 @@ gem "libv8", ">= 3.11.8"
 gem "therubyracer", ">= 0.11.0", :group => :assets, :platform => :ruby, :require => "v8"
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "paperclip", "~> 3.0"
+
+gem "bootstrap-wysihtml5-rails", "~> 0.3.1.17"
+gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'

@@ -1,4 +1,6 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
+  resources :comments
+
   resources :articles
 
   authenticated :user do
