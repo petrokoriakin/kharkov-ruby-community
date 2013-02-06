@@ -16,5 +16,4 @@
 //= require_tree .
 //= require bootstrap-button
 //= require bootstrap-wysihtml5
-//= require bootstrap-wysihtml5/locales
 

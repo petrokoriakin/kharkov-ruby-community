@@ -1,7 +1,9 @@
 Rails3BootstrapDeviseCancan::Application.routes.draw do
   resources :comments
 
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 
   authenticated :user do
     root :to => 'home#index'
@@ -10,5 +12,7 @@ Rails3BootstrapDeviseCancan::Application.routes.draw do
 
   devise_for :users
 
-  resources :users
+  resources :users do
+    get 'list', :on => :collection
+  end
 end

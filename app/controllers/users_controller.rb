@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
+  skip_authorize_resource :only => :list
 
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
@@ -9,6 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def list
+
+    @users=User.page(params[:page]).per(20)
   end
   
   def update

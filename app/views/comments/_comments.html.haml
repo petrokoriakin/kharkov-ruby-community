@@ -1,0 +1,20 @@
+%h4 Listing comments
+-if !@comments.nil?
+  - @comments.each do |comment|
+    .comment
+      = comment.body
+      %br
+      By #{User.find(comment.user_id).name}
+      %br
+      -if !current_user.nil?
+        -if current_user.id==comment.user_id
+          = link_to 'Edit', edit_comment_path(comment)
+        -if can? :destroy, @article
+          = link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
+      %br
+  =paginate @comments
+-else
+  %p No comments
+%br
+-if !current_user.nil?
+  = render "comments/form"

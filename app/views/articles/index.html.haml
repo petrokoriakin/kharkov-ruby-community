@@ -4,7 +4,7 @@
 %br
 -@articles.each do |article|
   .article
-    %h4 #{article.title}
+    =link_to article.title, article, :class=> 'article_title'
     =simple_format article.content
     %p Author: #{article.user.name}
     -if can? :update, @article
@@ -12,3 +12,4 @@
     -if can? :destroy, @article
       = link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
   %br
+= paginate @articles

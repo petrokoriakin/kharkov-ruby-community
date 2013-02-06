@@ -36,3 +36,5 @@ gem "paperclip", "~> 3.0"
 
 gem "bootstrap-wysihtml5-rails", "~> 0.3.1.17"
 gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'
+#gem 'will_paginate', '~> 3.0'
+gem 'kaminari'

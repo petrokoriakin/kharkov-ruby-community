@@ -1,10 +1,11 @@
+#require 'will_paginate/array'
 class ArticlesController < ApplicationController
   load_and_authorize_resource
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.reverse
+    @articles = Article.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,11 +17,14 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+    @comment= Comment.new
+    @comments=@article.comments.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }
     end
+
   end
 
   # GET /articles/new

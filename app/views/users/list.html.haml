@@ -1,0 +1,17 @@
+%h3 Users
+.span8
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Avatar
+        %th Name
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td
+            -if user.avatar.nil?
+              %p
+            -else
+              =image_tag user.avatar(:thumb)
+          %td=link_to  user.name, user_path(user)
+=paginate @users
